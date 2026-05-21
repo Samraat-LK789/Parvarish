@@ -12,19 +12,17 @@ export default function Hero() {
         <img
           src={project4}
           alt="The Dune"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-[20%_center] lg:object-center blur-[8px]"
         />
-        <div className="absolute inset-0 bg-white/80" />
-        <div className="absolute inset-0 backdrop-blur-[1px]" />
       </div>
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-20">
         <div className="max-w-3xl">
-        <h1 className="mt-6 text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-          Leap into The Realm of Collectable Architecture
+        <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          The Dune Swarnikaa
         </h1>
-        <p className="mt-6 text-base leading-relaxed text-black/70">
-          With focus is on delivering properties that stand out not just in the city, but on a national scale.
-        </p>
+        <div className="mt-6 text-2xl font-semibold leading-tight tracking-tight text-black sm:text-3xl">
+          Leap into The Realm of Collectable Architecture
+        </div>
         <div className="mt-10">
           <button
             type="button"
@@ -81,11 +79,13 @@ export default function Hero() {
                   allowFullScreen
                 />
               </div>
-              <div className="mt-6 text-sm uppercase tracking-[0.2em]">The Dune</div>
-              <div className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70">
+              <div className="mt-6 text-center text-sm uppercase tracking-[0.2em]">
+                The Dune
+              </div>
+              <div className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-white/70">
                 2026 · Resedential
               </div>
-              <div className="mt-3 text-xs uppercase tracking-[0.2em] text-white/80">
+              <div className="mt-3 text-center text-xs uppercase tracking-[0.2em] text-white/80">
                 For Those Who are Rare
               </div>
             </div>

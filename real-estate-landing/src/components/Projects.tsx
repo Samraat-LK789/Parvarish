@@ -40,7 +40,7 @@ export default function Projects() {
         <span>Projects</span>
       </div>
       <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
-        RESEDENTIAL / COMMERCIAL
+        RESIDENTIAL / COMMERCIAL
       </h2>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {projects.map((project) => {
@@ -66,6 +66,11 @@ export default function Projects() {
                 <div className="mt-2 text-xs uppercase tracking-[0.2em] text-black/70">
                   {project.year} · {project.category} · {project.status}
                 </div>
+                {project.location && (
+                  <div className="mt-2 text-xs uppercase tracking-[0.2em] text-black/60">
+                    {project.location}
+                  </div>
+                )}
                 <a
                   href={project.linkUrl}
                   target="_blank"
@@ -102,10 +107,10 @@ export default function Projects() {
             <button
               type="button"
               onClick={() => setActiveProjectId(null)}
-              className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center border border-white bg-black text-white transition-colors duration-200 hover:bg-white hover:text-black cursor-pointer"
+              className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center text-white transition-opacity duration-200 hover:opacity-70 cursor-pointer"
               aria-label="Close preview"
             >
-              <X className="h-5 w-5" aria-hidden="true" />
+              <X className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="relative h-[70vh] w-full bg-black">
               {activeGallery.length > 0 ? (
@@ -156,6 +161,11 @@ export default function Projects() {
                 {activeProject.year} · {activeProject.category} ·
                 {activeProject.status}
               </div>
+              {activeProject.location && (
+                <div className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60">
+                  {activeProject.location}
+                </div>
+              )}
               <a
                 href={activeProject.linkUrl}
                 target="_blank"

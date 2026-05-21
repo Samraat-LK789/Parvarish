@@ -17,6 +17,7 @@ export type Project = {
   year: number
   category: ProjectCategory
   status: string
+  location: string
   linkType: ProjectLinkType
   linkUrl: string
   image?: string
@@ -30,6 +31,7 @@ export const projects: Project[] = [
     year: 2011,
     category: 'Resedential',
     status: '',
+    location: 'Kanpur, Uttar Pradesh',
     linkType: 'map',
     linkUrl: 'https://maps.app.goo.gl/cTTVrZw7FWixWhZM7?g_st=am',
     image: project1,
@@ -40,6 +42,7 @@ export const projects: Project[] = [
     year: 2016,
     category: 'Resedential',
     status: '',
+    location: 'Kanpur, Uttar Pradesh',
     linkType: 'map',
     linkUrl: 'https://maps.app.goo.gl/M1opUreUCYvJNuFk7?g_st=aw',
     image: project2Graphic,
@@ -51,6 +54,7 @@ export const projects: Project[] = [
     year: 2021,
     category: 'Resedential',
     status: '',
+    location: 'Kanpur, Uttar Pradesh',
     linkType: 'map',
     linkUrl: 'https://maps.app.goo.gl/ba8vEbin8U5o1ZKs9?g_st=aw',
     image: project3,
@@ -61,6 +65,7 @@ export const projects: Project[] = [
     year: 2024,
     category: 'Commercial',
     status: '',
+    location: 'Jaipur, Rajasthan',
     linkType: 'map',
     linkUrl: 'https://goo.gl/maps/9rXmdzx2VDR7a7UC8?g_st=aw',
     image: project5b,
@@ -72,6 +77,7 @@ export const projects: Project[] = [
     year: 2026,
     category: 'Commercial',
     status: 'Available',
+    location: 'Jaipur, Rajasthan',
     linkType: 'map',
     linkUrl: 'https://maps.app.goo.gl/dBDitAoxntHLWKbK8?g_st=aw',
     image: project6,

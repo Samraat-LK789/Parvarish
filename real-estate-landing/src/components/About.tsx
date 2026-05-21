@@ -12,7 +12,7 @@ export default function About() {
           Parvarish Tex Product Pvt. Ltd.
         </h2>
         <p className="mt-4 text-base leading-relaxed text-black/70">
-          <i>"The Dune Swarnikaa represents the transition of Parvarish into the realm of Collectable Architecture. Having established a foundation in high quality 
+          <i>"The Dune represents the transition of Parvarish into the realm of Collectable Architecture. Having established a foundation in high quality 
           residential housing, this project represents our one of one magnum opus the result of giving an architect total creative liberty. Based in the historic 
           city of Jaipur, we are trying to bridge the gap between traditional real estate and high value asset curation. We recognize that for the modern HNI, a 
           home should be a Trophy an asset as rare and brag worthy as a limited edition supercar. Our focus is on delivering properties that stand out not just in the city, 
