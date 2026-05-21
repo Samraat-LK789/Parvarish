@@ -15,3 +15,7 @@ Parvarish is a premium real-estate landing experience designed to showcase colle
 - Projects
 - About
 - Contact
+
+Developed By - [Samraat Jain](https://www.linkedin.com/in/samraat-jain/)
+
+For Ashish Jain - Managing Director of Parvarish Tex Products Pvt. Ltd.
