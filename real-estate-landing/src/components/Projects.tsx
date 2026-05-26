@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   Building2,
   ChevronLeft,
@@ -13,6 +13,8 @@ import { projects } from '../data/projects'
 export default function Projects() {
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const touchStartXRef = useRef<number | null>(null)
+  const touchStartYRef = useRef<number | null>(null)
   const activeProject = useMemo(
     () => projects.find((project) => project.id === activeProjectId) ?? null,
     [activeProjectId],
@@ -32,6 +34,46 @@ export default function Projects() {
   useEffect(() => {
     setActiveImageIndex(0)
   }, [activeProjectId])
+
+  const handleSwipeStart = (
+    clientX: number,
+    clientY: number,
+  ) => {
+    touchStartXRef.current = clientX
+    touchStartYRef.current = clientY
+  }
+
+  const handleSwipeEnd = (clientX: number, clientY: number) => {
+    if (!activeGallery.length) {
+      return
+    }
+
+    const startX = touchStartXRef.current
+    const startY = touchStartYRef.current
+
+    if (startX === null || startY === null) {
+      return
+    }
+
+    const deltaX = clientX - startX
+    const deltaY = clientY - startY
+    const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY)
+    const minSwipe = 40
+
+    if (isHorizontal && Math.abs(deltaX) >= minSwipe) {
+      if (deltaX > 0) {
+        setActiveImageIndex(
+          (index) =>
+            (index - 1 + activeGallery.length) % activeGallery.length,
+        )
+      } else {
+        setActiveImageIndex((index) => (index + 1) % activeGallery.length)
+      }
+    }
+
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+  }
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-20">
@@ -118,6 +160,24 @@ export default function Projects() {
                   src={activeGallery[activeImageIndex]}
                   alt={activeProject.name}
                   className="h-full w-full object-contain"
+                  onTouchStart={(event) =>
+                    handleSwipeStart(
+                      event.touches[0].clientX,
+                      event.touches[0].clientY,
+                    )
+                  }
+                  onTouchEnd={(event) =>
+                    handleSwipeEnd(
+                      event.changedTouches[0].clientX,
+                      event.changedTouches[0].clientY,
+                    )
+                  }
+                  onPointerDown={(event) =>
+                    handleSwipeStart(event.clientX, event.clientY)
+                  }
+                  onPointerUp={(event) =>
+                    handleSwipeEnd(event.clientX, event.clientY)
+                  }
                 />
               ) : (
                 <div className="h-full w-full" aria-hidden="true" />
@@ -134,10 +194,10 @@ export default function Projects() {
                         activeGallery.length,
                     )
                   }
-                  className="inline-flex h-8 w-8 items-center justify-center text-white transition-opacity duration-200 hover:opacity-70 cursor-pointer"
+                  className="inline-flex h-12 w-12 items-center justify-center text-white transition-opacity duration-200 hover:opacity-70 cursor-pointer"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+                  <ChevronLeft className="h-6 w-6" aria-hidden="true" />
                 </button>
                 <button
                   type="button"
@@ -146,10 +206,10 @@ export default function Projects() {
                       (index) => (index + 1) % activeGallery.length,
                     )
                   }
-                  className="inline-flex h-8 w-8 items-center justify-center text-white transition-opacity duration-200 hover:opacity-70 cursor-pointer"
+                  className="inline-flex h-12 w-12 items-center justify-center text-white transition-opacity duration-200 hover:opacity-70 cursor-pointer"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="h-5 w-5" aria-hidden="true" />
+                  <ChevronRight className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
             )}
